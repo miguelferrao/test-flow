@@ -4,13 +4,15 @@ import yaml
 from yaml import SafeLoader
 from prefect.run_configs import KubernetesRun
 from prefect.storage import GitHub
+import requests
 
 
 @task
 def job1():
-    with open('flows/k8s_job.py') as f:
-        data = yaml.load(f, Loader=SafeLoader)
-        CreateNamespacedJob(body=data, kubernetes_api_key_secret=None).run()
+    url = 'https://raw.githubusercontent.com/miguelferrao/test-flow/0908802d9ac94a7ceb2a53c0ac344f9e288fffa1/flows/job.yaml'
+    download = requests.get(url).content
+    data = yaml.load(download, Loader=SafeLoader)
+    CreateNamespacedJob(body=data, kubernetes_api_key_secret=None).run()
     
 
 with Flow(name="job-flow-1", run_config=KubernetesRun()) as flow:
