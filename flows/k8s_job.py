@@ -8,7 +8,7 @@ from prefect.storage import GitHub
 
 @task
 def job1():
-    with open('job.yaml') as f:
+    with open('flows/k8s_job.py') as f:
         data = yaml.load(f, Loader=SafeLoader)
         CreateNamespacedJob(body=data, kubernetes_api_key_secret=None).run()
     
