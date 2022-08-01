@@ -12,7 +12,7 @@ def job1():
     url = 'https://raw.githubusercontent.com/miguelferrao/test-flow/0908802d9ac94a7ceb2a53c0ac344f9e288fffa1/flows/job.yaml'
     download = requests.get(url).content
     data = yaml.load(download, Loader=SafeLoader)
-    CreateNamespacedJob(body=data, kubernetes_api_key_secret='default-token-rpgfn').run()
+    CreateNamespacedJob(body=data, kubernetes_api_key_secret=' https://inndxtest--test-inndx-aks-a43143-59995e87.hcp.southafricanorth.azmk8s.io:443').run()
     
 
 with Flow(name="job-flow-1") as flow:
