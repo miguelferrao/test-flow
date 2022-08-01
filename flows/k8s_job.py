@@ -4,7 +4,6 @@ import yaml
 from yaml import SafeLoader
 from prefect.run_configs import KubernetesRun
 from prefect.storage import GitHub
-from git import Repo
 
 
 @task
