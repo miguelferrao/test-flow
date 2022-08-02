@@ -12,7 +12,7 @@ def job1():
     url = 'https://raw.githubusercontent.com/miguelferrao/test-flow/0908802d9ac94a7ceb2a53c0ac344f9e288fffa1/flows/job.yaml'
     download = requests.get(url).content
     data = yaml.load(download, Loader=SafeLoader)
-    CreateNamespacedJob(body=data, kubernetes_api_key_secret='pcu_q2T8lVc7TieX1rMecnz2JRV2iwG8ct1THapc').run()
+    CreateNamespacedJob(body=data, kubernetes_api_key_secret=None).run()
     
 
 with Flow(name="job-flow-1") as flow:
