@@ -9,13 +9,15 @@ import requests
 
 @task
 def job1():
-    url = 'https://raw.githubusercontent.com/miguelferrao/test-flow/0908802d9ac94a7ceb2a53c0ac344f9e288fffa1/flows/job.yaml'
-    download = requests.get(url).content
-    data = yaml.load(download, Loader=SafeLoader)
-    CreateNamespacedJob(body=data, kubernetes_api_key_secret=None).run()
+    print("hello")
+    
+url = 'https://raw.githubusercontent.com/miguelferrao/test-flow/0908802d9ac94a7ceb2a53c0ac344f9e288fffa1/flows/job.yaml'
+download = requests.get(url).content
+data = yaml.load(download, Loader=SafeLoader)
+
     
 
-with Flow(name="job-flow-1") as flow:
+with Flow(name="job-flow-1", run_config=KubernetesRun(job_template=data)) as flow:
     task = job1()
 
 flow.storage = GitHub(
