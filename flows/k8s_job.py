@@ -24,3 +24,5 @@ flow.storage = GitHub(
     repo="miguelferrao/test-flow",
     path="k8s_job.py",       
 )
+
+flow.run()
