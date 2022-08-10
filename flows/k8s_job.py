@@ -12,7 +12,7 @@ def job1():
     url = 'https://raw.githubusercontent.com/miguelferrao/test-flow/0908802d9ac94a7ceb2a53c0ac344f9e288fffa1/flows/job.yaml'
     download = requests.get(url).content
     data = yaml.load(download, Loader=SafeLoader)
-    CreateNamespacedJob(body=data, kubernetes_api_key_secret="MIIE6TCCAtGgAwIBAgIRAMa/ANAceQ5KXqtK5VEGNxgwDQYJKoZIhvcNAQELBQAw
+    CreateNamespacedJob(body=data, kubernetes_api_key_secret='''MIIE6TCCAtGgAwIBAgIRAMa/ANAceQ5KXqtK5VEGNxgwDQYJKoZIhvcNAQELBQAw
 DTELMAkGA1UEAxMCY2EwIBcNMjIwNTE1MDUxNTA1WhgPMjA1MjA1MTUwNTI1MDVa
 MA0xCzAJBgNVBAMTAmNhMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA
 stX+R/BGCnJv1H2Lws1cRCBEsR06bRN0MBDCLwQHclM6w68HjB7+Dw41x28FwhKo
@@ -38,7 +38,7 @@ ckP7lvnNhwPf7p6mI+dHPi6NeZfvd8WdB3/maJ+OhdCa7re/vz2Q4+hDd8P2+vbf
 W8AgY2G1RQhd1CneTm5lqvbjvnea/xyojnq0zWTQk0+CU8RdUfGUBrPFzpB4lNox
 quKCynFE1jlNia7m2OtJzNzo/W2kchvFzel6nwFQCjD2x9OawLBBpHCV+BT+9Df3
 Hr7HCqT0SXpCWF1Tx0NZeenEhYvAJgr7zz+UnWGwM2HibZl71SBBWu4aR1zxgmF3
-MibJvYfIK0LtY4j+fw==").run()
+MibJvYfIK0LtY4j+fw==''').run()
     
 
 with Flow(name="job-flow-1") as flow:
